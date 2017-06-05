@@ -1,0 +1,82 @@
+import java.util.Scanner;
+public class LoopMasters2Dowhile {
+    public static void main(String[]args) {
+        Scanner keyboard = new Scanner (System.in);
+        
+        System.out.println("Loop Masters Numbers");
+        System.out.println("====================");
+        
+        int firstnum =0;
+        int secondnum = 0;
+       do {
+        System.out.print("Enter two numbers firstNum must be less that the secondNum." +
+                       "\nEnter the first number======> ");
+         firstnum = keyboard.nextInt();
+        
+        System.out.print("Enter the second number=====> ");
+         secondnum = keyboard.nextInt();
+        
+        if (!(firstnum < secondnum)) {
+            System.out.print("\f");
+            System.out.println("ERROR");
+        }
+    }
+        while(!(firstnum < secondnum) );
+        
+        System.out.println("\nEVEN numbers within range");
+        System.out.println("=========================");
+       int count = firstnum;
+        int averagee = 0;
+        
+        do {
+            
+            if ( count%2 == 0) {
+                System.out.println( count);
+                averagee = averagee + count;
+            }
+            count++;
+        }
+        while(count <= secondnum);
+       
+        System.out.println("\nODD numbers within range");
+        System.out.println("=========================");
+        
+         //int averageo;
+         int oddsqr = 0;
+         double mthpow;
+         count = firstnum;
+         do {
+            
+            if ( !(count%2 == 0)) {
+                System.out.println(count);
+                //averageo = averageo + count;
+                mthpow = Math.pow((double)count, 2.0);
+                oddsqr = oddsqr + ((int)mthpow);
+            }
+            count++;
+        }
+        while(count <= secondnum);
+         
+        System.out.println("\n" + averagee + " is the sum of the EVEN numbers");
+        
+        System.out.println("\nNumber 1 to 10 and their squares");
+        System.out.println("================================");
+        double n1 = 1;
+        double n2 = 10;
+        double countn = n1;
+        
+         do {
+            double results = (Math.pow(countn, 2));
+            System.out.println(countn +" === " + results);
+            countn++;
+            
+        }
+        while(countn <= n2);
+        
+        
+        
+        
+        System.out.println("\n" + oddsqr + " is the sum of the square of the ODD numbers");
+
+    }
+}
