@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+public class Invest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Future Value Investment Calculator");
+        System.out.println("==================================");
+        
+        Scanner keyboard = new Scanner(System.in);
+        
+        System.out.print("Enter present value (amount invested) ===> ");
+        double percent = keyboard.nextDouble();
+        
+        System.out.print("Enter time in years for investment ===> ");
+        double time = keyboard.nextDouble();
+        
+        System.out.print("Enter low interest rate percentage ===> ");
+        double low = keyboard.nextDouble();
+        
+        System.out.print("Enter high interest rate percentage ===> ");
+        double high = keyboard.nextDouble();
+        
+        System.out.println("\f");
+        
+        System.out.println("Investment Interest Rate Table");
+        System.out.println("==============================");
+        
+        System.out.println("Principle: " + percent);
+        System.out.println("Time: " + time + " years");
+        System.out.println("Low Rate: " + low + "%");
+        System.out.println("High Rate: " + high + "%");
+        
+        System.out.println("Option" + "\tRate" + "\tFuture Value");
+        System.out.println("------" + "\t----" + "\t------------");
+        
+        DecimalFormat format = new DecimalFormat("###,###.00");
+        DecimalFormat format1 = new DecimalFormat("###,###.0");
+        
+        high = high * 0.01;
+        low = low * 0.01;
+        int count = 0;
+        double FV;
+        for (count = 0; high >= low; low+=0.005)
+        {
+            count++;
+            FV = percent * Math.pow(1 + low, time);
+            System.out.println(count + "\t" + format1.format(low * 100) + "\t" + format.format(FV));
+            
+        }
+
+}
+}
