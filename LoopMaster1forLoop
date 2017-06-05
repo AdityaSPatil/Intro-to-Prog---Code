@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class LoopMaster_ForWhile {
+    public static void main(String[]args) {
+        Scanner keyboard = new Scanner(System.in);
+        
+        System.out.println("Test Average");
+        System.out.println("============");
+        
+       
+    
+        String yn;
+        do {
+       int count;
+        int total = 0;
+        int scores  = 0;
+        int average = 0;
+        int t = 0;
+        
+        System.out.print("How many scores would you like to average ===> ");
+         scores = keyboard.nextInt();
+        for ( count = 1; count <= scores; count++) {
+         
+             System.out.print("Score" + count +" ===>");
+         t = keyboard.nextInt();
+        
+         total = total + t;
+         
+            }
+        
+        
+        
+        
+         average = total/scores;
+        
+        System.out.println("Average Score = " + average + "%");
+        
+        keyboard.nextLine();
+        System.out.print("Average another set of scores? (y OR n)===>");
+         yn = keyboard.nextLine();
+        
+        
+        System.out.print("\f");
+    }while(yn.equals("Y") || yn.equals("y"));
+            System.out.print("Thanks for using LoopMaster - Test Average!");
+        
+    }
+}
