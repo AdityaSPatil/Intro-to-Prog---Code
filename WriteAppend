@@ -1,0 +1,42 @@
+import java.util.Scanner; 
+import java.io.*; 
+public class WriteAppend_Part1 { 
+public static void main(String[] args) 
+throws IOException { 
+String choice; 
+String filename; 
+String friendName; 
+int numFriends; 
+//create scanner object 
+Scanner keyboard=new Scanner(System.in); 
+System.out.print("Would you like to [W]rite or [A]ppend to a file choice=");
+choice = keyboard.nextLine(); 
+
+  //WRITE data to a file 
+  if (choice.equalsIgnoreCase("W")) { 
+ //get the number of friends 
+ System.out.print("How many friends do you have? "); 
+ numFriends=keyboard.nextInt(); 
+
+ //consume the remaining newline character 
+ keyboard.nextLine(); 
+ //get the filename 
+ System.out.print("Enter the filename: "); 
+ filename=keyboard.nextLine();
+ System.out.print("\n"); 
+ 
+  //open the file 
+  PrintWriter outputFile=new PrintWriter(filename + ".txt"); 
+  //get data and write it to the file 
+   for (int i=1; i <= numFriends; i++) { 
+   //get the name of a friend 
+   System.out.print("Enter the name of friend " + "number " + i + ": "); 
+   friendName=keyboard.nextLine(); 
+   //write the name to the file 
+    outputFile.println(friendName); 
+   }  
+//close the file 
+outputFile.close(); 
+}
+}
+}
