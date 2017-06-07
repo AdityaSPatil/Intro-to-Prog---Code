@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.io.*;
+
+public class FileWriteDemo
+{
+    public static void main(String[] args)
+    throws IOException
+    {
+        String filename;
+        String friendname;
+        int numfriends;
+        
+        Scanner keyboard = new Scanner(System.in);
+        
+        System.out.print("How many friends do you have? ");
+        numfriends = keyboard.nextInt();
+        
+        keyboard.nextLine();
+        
+        System.out.print("Enter the file name: ");
+        filename = keyboard.nextLine();
+        System.out.print("\n");
+        
+        PrintWriter outputFile = new PrintWriter(filename + ".txt.");
+        
+        for (int i = 1; i <= numfriends; i++)
+        {
+            System.out.print("enter the name of friend " + "number " + i + ": ");
+            friendname = keyboard.nextLine();
+            
+            outputFile.println(friendname);
+        }
+        
+        outputFile.close();
+        System.out.println("\nData written to file.");
+        
+    }
+}
