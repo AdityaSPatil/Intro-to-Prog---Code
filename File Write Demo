@@ -1,38 +1,73 @@
-import java.util.Scanner;
-import java.io.*;
+import java.util.Scanner; 
+import java.io.*; 
+public class WriteAppend { 
+public static void main(String[] args) 
+throws IOException { 
+String choice; 
+String filename; 
+String friendName; 
+int numFriends; 
+//create scanner object 
+Scanner keyboard=new Scanner(System.in); 
+System.out.print("Would you like to [W]rite or [A]ppend to a file choice=");
+choice = keyboard.nextLine(); 
 
-public class FileWriteDemo
-{
-    public static void main(String[] args)
-    throws IOException
-    {
-        String filename;
-        String friendname;
-        int numfriends;
-        
-        Scanner keyboard = new Scanner(System.in);
-        
-        System.out.print("How many friends do you have? ");
-        numfriends = keyboard.nextInt();
-        
-        keyboard.nextLine();
-        
-        System.out.print("Enter the file name: ");
-        filename = keyboard.nextLine();
-        System.out.print("\n");
-        
-        PrintWriter outputFile = new PrintWriter(filename + ".txt.");
-        
-        for (int i = 1; i <= numfriends; i++)
-        {
-            System.out.print("enter the name of friend " + "number " + i + ": ");
-            friendname = keyboard.nextLine();
-            
-            outputFile.println(friendname);
-        }
-        
-        outputFile.close();
-        System.out.println("\nData written to file.");
-        
-    }
+  //WRITE data to a file 
+  if (choice.equalsIgnoreCase("W")) { 
+ //get the number of friends 
+ System.out.print("How many friends do you have? "); 
+ numFriends=keyboard.nextInt(); 
+
+ //consume the remaining newline character 
+ keyboard.nextLine(); 
+ //get the filename 
+ System.out.print("Enter the filename: "); 
+ filename=keyboard.nextLine();
+ System.out.print("\n"); 
+ 
+  //open the file 
+  PrintWriter outputFile=new PrintWriter(filename + ".txt"); 
+  //get data and write it to the file 
+   for (int i=1; i <= numFriends; i++) { 
+   //get the name of a friend 
+   System.out.print("Enter the name of friend " + "number " + i + ": "); 
+   friendName=keyboard.nextLine(); 
+   //write the name to the file 
+    outputFile.println(friendName); 
+   }  
+//close the file 
+outputFile.close(); 
+
+
+}
+//APPEND data to a file 
+else if (choice.equalsIgnoreCase("A")) { 
+//get the number of friends 
+System.out.print("How many more friends do you have? "); 
+numFriends=keyboard.nextInt(); 
+//consume the remaining newline character 
+keyboard.nextLine(); 
+//get the filename 
+System.out.print("Enter the filename: "); 
+filename=keyboard.nextLine(); 
+System.out.print("\n"); 
+//open the file for append 
+FileWriter fwriter=new FileWriter(filename + ".txt", true); 
+PrintWriter outputFile=new PrintWriter(fwriter); 
+//get data and write it to the file 
+for (int i=1; i <= numFriends; i++) { 
+//get the name of a friend 
+System.out.print("Enter the name of friend " + "number " + i + ": "); 
+friendName=keyboard.nextLine(); 
+//append the name to the file
+ //PrintWriter outputFile=new PrintWriter(fwriter); 
+ outputFile.println(friendName); 
+}  
+//close the file 
+//outputFile.close(); 
+fwriter.close(); 
+} 
+System.out.println("\nData written to the file."); 
+
+}
 }
